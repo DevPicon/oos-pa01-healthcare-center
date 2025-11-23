@@ -29,16 +29,16 @@ public class Calificacion {
 
     @ManyToOne
     @JoinColumn(name = "centro_id", nullable = false)
-    private CentroDeSalud centro;
+    private CentroDeSalud centroDeSalud;
 
     public Calificacion() {
     }
 
-    public Calificacion(LocalDate fecha, int infraestructura, int servicios, CentroDeSalud centro) {
+    public Calificacion(LocalDate fecha, int infraestructura, int servicios, CentroDeSalud centroDeSalud) {
         this.fecha = fecha;
         this.infraestructura = infraestructura;
         this.servicios = servicios;
-        this.centro = centro;
+        this.centroDeSalud = centroDeSalud;
         this.calificacionFinal = calcularCalificacion();
         this.estado = this.calificacionFinal >= 80 ? Estado.APROBADO : Estado.RECHAZADO;
     }
@@ -91,12 +91,12 @@ public class Calificacion {
         this.estado = estado;
     }
 
-    public CentroDeSalud getCentro() {
-        return centro;
+    public CentroDeSalud getCentroDeSalud() {
+        return centroDeSalud;
     }
 
-    public void setCentro(CentroDeSalud centro) {
-        this.centro = centro;
+    public void setCentroDeSalud(CentroDeSalud centroDeSalud) {
+        this.centroDeSalud = centroDeSalud;
     }
 
     public double calcularCalificacion() {

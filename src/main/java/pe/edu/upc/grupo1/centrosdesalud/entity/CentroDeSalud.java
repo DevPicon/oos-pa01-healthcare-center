@@ -26,6 +26,9 @@ public class CentroDeSalud {
     @OneToMany(mappedBy = "centro", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Ambulancia> ambulancias = new ArrayList<>();
 
+    @OneToMany(mappedBy = "centroDeSalud", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Calificacion> calificaciones = new ArrayList<>();
+
     public CentroDeSalud() {
     }
 
@@ -75,11 +78,25 @@ public class CentroDeSalud {
         this.ambulancias = ambulancias;
     }
 
+    public List<Calificacion> getCalificaciones() {
+        return calificaciones;
+    }
+
+    public void setCalificaciones(List<Calificacion> calificaciones) {
+        this.calificaciones = calificaciones;
+    }
+
     public double calcularUltimaCalificacion() {
-        return 0.0;
+        if (calificaciones == null || calificaciones.isEmpty()) {
+            return 0.0;
+        }
+        return calificaciones.stream()
+                .max((c1, c2) -> c1.getFecha().compareTo(c2.getFecha()))
+                .map(Calificacion::getCalificacionFinal)
+                .orElse(0.0);
     }
 
     public boolean estaAprobado() {
-        return false;
+        return calcularUltimaCalificacion() >= 80.0;
     }
 }
