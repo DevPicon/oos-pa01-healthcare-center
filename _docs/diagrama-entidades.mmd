@@ -1,0 +1,112 @@
+classDiagram
+direction LR
+    class CentroDeSalud {
+	    - Long id
+	    - String nombre
+	    - TipoCentro tipo
+	    - Region region
+	    - List~Ambulancia~ ambulancias
+	    --
+	    + CentroDeSalud()
+	    + CentroDeSalud(nombre, tipo, region)
+	    + getId()
+	    + setId(id)
+	    + getNombre()
+	    + setNombre(nombre)
+	    + getTipo()
+	    + setTipo(tipo)
+	    + getRegion()
+	    + setRegion(region)
+	    + getAmbulancias()
+	    + setAmbulancias(ambulancias)
+	    + calcularUltimaCalificacion() double
+	    + estaAprobado() boolean
+    }
+
+    class Calificacion {
+	    - Long id
+	    - LocalDate fecha
+	    - int infraestructura
+	    - int servicios
+	    - double calificacionFinal
+	    - Estado estado
+	    - CentroDeSalud centro
+	    --
+	    + Calificacion()
+	    + Calificacion(fecha, infraestructura, servicios, centro)
+	    + getId()
+	    + setId(id)
+	    + getFecha()
+	    + setFecha(fecha)
+	    + getInfraestructura()
+	    + setInfraestructura(i)
+	    + getServicios()
+	    + setServicios(s)
+	    + getCalificacionFinal()
+	    + setCalificacionFinal(cf)
+	    + calcularCalificacion() double
+	    + getEstado()
+	    + setEstado(estado)
+	    + getCentro()
+	    + setCentro(centro)
+    }
+
+    class Ambulancia {
+	    - Long id
+	    - String placa
+	    - String modelo
+	    - CentroDeSalud centro
+	    --
+	    + Ambulancia()
+	    + Ambulancia(placa, modelo, centro)
+	    + getId()
+	    + setId(id)
+	    + getPlaca()
+	    + setPlaca(placa)
+	    + getModelo()
+	    + setModelo(modelo)
+	    + getCentro()
+	    + setCentro(centro)
+    }
+
+    class Region {
+	    - Long id
+	    - String nombre
+	    --
+	    + Region()
+	    + Region(nombre)
+	    + getId()
+	    + setId(id)
+	    + getNombre()
+	    + setNombre(nombre)
+    }
+
+    class TipoCentro {
+	    - Long id
+	    - String nombre
+	    --
+	    + TipoCentro()
+	    + TipoCentro(nombre)
+	    + getId()
+	    + setId(id)
+	    + getNombre()
+	    + setNombre(nombre)
+    }
+
+    class Estado {
+	    APROBADO
+	    RECHAZADO
+    }
+
+	<<Entity>> CentroDeSalud
+	<<Entity>> Calificacion
+	<<Entity>> Ambulancia
+	<<Entity>> Region
+	<<Entity>> TipoCentro
+	<<Enum>> Estado
+
+    Region "1" --> "*" CentroDeSalud : region
+    TipoCentro "1" --> "*" CentroDeSalud : tipo
+    CentroDeSalud "1" --> "*" Ambulancia : ambulancias
+    Calificacion "*" --> "1" CentroDeSalud : centro
+

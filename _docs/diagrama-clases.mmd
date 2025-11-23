@@ -1,0 +1,119 @@
+classDiagram
+direction BT
+    class CentroDeSalud {
+	    - Long id
+	    - String nombre
+	    - TipoCentro tipo
+	    - Region region
+	    - List~Ambulancia~ ambulancias
+	    --
+	    + calcularUltimaCalificacion() double
+	    + estaAprobado() boolean
+    }
+
+    class Calificacion {
+	    - Long id
+	    - LocalDate fecha
+	    - int infraestructura
+	    - int servicios
+	    - double calificacionFinal
+	    - Estado estado
+	    - CentroDeSalud centro
+	    --
+	    + calcularCalificacion() double
+    }
+
+    class TipoCentro {
+	    - Long id
+	    - String nombre
+    }
+
+    class Region {
+	    - Long id
+	    - String nombre
+    }
+
+    class Ambulancia {
+	    - Long id
+	    - String placa
+	    - String modelo
+	    - CentroDeSalud centro
+    }
+
+    class CentroDeSaludRepository {
+	    + findAll()
+	    + findById(id)
+	    + save()
+	    + delete()
+	    + findByTipo(nombre)
+	    + findByRegion(nombre)
+    }
+
+    class CalificacionRepository {
+	    + findByCentroId(id)
+	    + findTop1ByCentroIdOrderByFechaDesc(id)
+    }
+
+    class AmbulanciaRepository {
+	    + findByCentroId(id)
+	    + save()
+	    + findById()
+	    + findAll()
+	    + delete()
+    }
+
+    class CentroDeSaludService {
+	    + registrar(CentroDeSalud c)
+	    + listar()
+	    + listarConCalificaciones()
+	    + listarPorTipo(tipo)
+	    + obtenerEstado(id)
+	    + actualizarNombre(id, nuevoNombre)
+	    + obtenerAmbulancias(idCentro)
+	    + obtenerUltimaCalificacion(idCentro)
+    }
+
+    class CalificacionService {
+	    + registrarCalificacion(c)
+	    + obtenerCalificacionesPorCentro(idCentro)
+    }
+
+    class CentroDeSaludController {
+	    + getCentros()
+	    + getCentrosConCalificaciones()
+	    + getCentrosPorTipo(tipo)
+	    + getEstadoCentro(id)
+	    + updateNombre(id, nuevoNombre)
+	    + createCentro()
+	    + getAmbulanciasPorCentro(id)
+	    + getUltimaCalificacion(id)
+    }
+
+    class CalificacionController {
+	    + createCalificacion()
+	    + getCalificacionesPorCentro(idCentro)
+    }
+
+	<<Entity>> CentroDeSalud
+	<<Entity>> Calificacion
+	<<Entity>> TipoCentro
+	<<Entity>> Region
+	<<Entity>> Ambulancia
+	<<Repository>> CentroDeSaludRepository
+	<<Repository>> CalificacionRepository
+	<<Repository>> AmbulanciaRepository
+	<<Service>> CentroDeSaludService
+	<<Service>> CalificacionService
+	<<RestController>> CentroDeSaludController
+	<<RestController>> CalificacionController
+
+    Region "1" --> "*" CentroDeSalud
+    TipoCentro "1" --> "*" CentroDeSalud
+    CentroDeSalud "1" --> "*" Ambulancia
+    Calificacion "*" --> "1" CentroDeSalud
+    AmbulanciaRepository --> CentroDeSaludService
+    CentroDeSaludRepository --> CentroDeSaludService
+    CalificacionRepository --> CalificacionService
+    CentroDeSaludService --> CentroDeSaludController
+    CalificacionService --> CalificacionController
+
