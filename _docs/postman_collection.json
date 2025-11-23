@@ -1,0 +1,548 @@
+{
+  "info": {
+    "name": "Healthcare Center API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Centros de Salud",
+      "item": [
+        {
+          "name": "Listar todos los Centros de Salud",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/centros",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "centros"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Listar Centros con Calificaciones",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/centros/con-calificaciones",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "centros",
+                "con-calificaciones"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Listar Centros por Tipo",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/centros/tipo/Hospital",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "centros",
+                "tipo",
+                "Hospital"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Buscar Centro por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/centros/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "centros",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Obtener Estado de Aprobación",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/centros/1/estado",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "centros",
+                "1",
+                "estado"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Obtener Ambulancias de un Centro",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/centros/1/ambulancias",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "centros",
+                "1",
+                "ambulancias"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Obtener Última Calificación de un Centro",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/centros/1/ultima-calificacion",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "centros",
+                "1",
+                "ultima-calificacion"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Crear Centro de Salud",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Hospital Nuevo\",\n  \"region\": { \"id\": 1 },\n  \"tipo\": { \"id\": 1 }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/centros",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "centros"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Actualizar Nombre de Centro",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Hospital Rebagliati Actualizado\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/centros/1/nombre",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "centros",
+                "1",
+                "nombre"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Eliminar Centro de Salud",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/centros/4",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "centros",
+                "4"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Calificaciones",
+      "item": [
+        {
+          "name": "Listar todas las Calificaciones",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/calificaciones",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "calificaciones"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Buscar Calificación por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/calificaciones/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "calificaciones",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Listar Calificaciones por Centro",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/calificaciones/centro/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "calificaciones",
+                "centro",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Crear Calificación",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fecha\": \"2025-11-24\",\n  \"infraestructura\": 85,\n  \"servicios\": 90,\n  \"centroDeSalud\": { \"id\": 1 }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/calificaciones",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "calificaciones"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Eliminar Calificación",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/calificaciones/8",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "calificaciones",
+                "8"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Ambulancias",
+      "item": [
+        {
+          "name": "Listar todas las Ambulancias",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/ambulancias",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ambulancias"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Buscar Ambulancia por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/ambulancias/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ambulancias",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Crear Ambulancia",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"placa\": \"TEST-123\",\n  \"modelo\": \"Toyota Hiace\",\n  \"centro\": { \"id\": 1 }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/ambulancias",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ambulancias"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Eliminar Ambulancia",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/ambulancias/4",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ambulancias",
+                "4"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Regiones",
+      "item": [
+        {
+          "name": "Listar todas las Regiones",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/regiones",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "regiones"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Buscar Region por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/regiones/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "regiones",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Crear Region",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"La Libertad\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/regiones",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "regiones"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Eliminar Region",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/regiones/3",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "regiones",
+                "3"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tipos de Centro",
+      "item": [
+        {
+          "name": "Listar todos los Tipos de Centro",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/tipos-centro",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "tipos-centro"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Buscar Tipo de Centro por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/tipos-centro/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "tipos-centro",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Crear Tipo de Centro",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Posta Medica\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/tipos-centro",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "tipos-centro"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Eliminar Tipo de Centro",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/tipos-centro/2",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "tipos-centro",
+                "2"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    }
+  ]
+}

@@ -49,6 +49,23 @@ Luego, ejecuta la aplicación Spring Boot (ejemplos):
 La API quedará disponible en `http://localhost:8080`.
 
 
+## Uso de la API con Postman
+
+Para facilitar la prueba y la interacción con la API, se proporciona una colección de Postman que incluye todos los endpoints disponibles.
+
+1.  **Importar la Colección**:
+    - El archivo de la colección se encuentra en el directorio `_docs`:
+      ```
+      _docs/postman_collection.json
+      ```
+    - Abre Postman, ve a `File > Import...` y selecciona este archivo.
+
+2.  **Configurar la URL Base**:
+    - La colección utiliza una variable `{{baseUrl}}` para la dirección del servidor.
+    - Por defecto, esta variable está configurada como `http://localhost:8080`, que es la URL donde se ejecuta la aplicación Spring Boot.
+    - Si ejecutas la aplicación en un puerto diferente, puedes cambiar el valor de esta variable en la configuración de la colección en Postman.
+
+
 ## Ejecutar Tests y Generar Reporte de Cobertura
 
 El proyecto incluye una suite completa de tests con **86 tests** que cubren el **83%** del código.
