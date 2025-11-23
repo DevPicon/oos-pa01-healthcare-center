@@ -6,6 +6,48 @@ URL base (Spring Boot por defecto): `http://localhost:8080`
 
 Nota: Todos los endpoints devuelven códigos de estado HTTP estándar. `404 Not Found` se usa cuando una entidad no existe; `400 Bad Request` para entradas inválidas; `201 Created` cuando la creación es exitosa; `204 No Content` cuando la eliminación es exitosa.
 
+## Instrucciones iniciales: levantar Docker (docker-compose)
+
+Antes de iniciar la aplicación, levanta la base de datos PostgreSQL con Docker Compose.
+
+Requisitos previos:
+- Docker (20+ recomendado) y Docker Compose v2 instalados.
+
+Pasos:
+1) En la raíz del proyecto, inicia los servicios definidos en `docker-compose.yml`:
+   ```
+   docker compose up -d
+   ```
+2) Verifica que el contenedor esté saludable y corriendo:
+   ```
+   docker compose ps
+   docker compose logs -f postgres
+   ```
+   Espera a ver el mensaje de que PostgreSQL está listo para aceptar conexiones.
+3) Credenciales y conexión (usadas por la app Spring):
+   - Host: `localhost`
+   - Puerto: `5432`
+   - Base de datos: `healthcare_center`
+   - Usuario: `admin`
+   - Password: `admin123`
+   Estos valores ya están configurados en `src/main/resources/application.properties`.
+
+4) Cuando termines, detén y elimina los contenedores:
+   ```
+   docker compose down
+   ```
+   Si además quieres borrar los volúmenes (datos persistidos):
+   ```
+   docker compose down -v
+   ```
+
+Luego, ejecuta la aplicación Spring Boot (ejemplos):
+```
+./mvnw spring-boot:run
+```
+
+La API quedará disponible en `http://localhost:8080`.
+
 
 ## AmbulanciaController
 Ruta base: `/ambulancias`
