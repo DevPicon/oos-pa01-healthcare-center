@@ -26,7 +26,7 @@ public class CentroDeSaludService {
     }
 
     public List<CentroDeSalud> buscarPorTipo(String tipo) {
-        return centroDeSaludRepository.findByTipoCentro_Nombre(tipo);
+        return centroDeSaludRepository.findByTipo_Nombre(tipo);
     }
 
     public List<CentroDeSalud> listarCentrosConCalificaciones() {

@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface CentroDeSaludRepository extends JpaRepository<CentroDeSalud, Long> {
 
-    List<CentroDeSalud> findByTipoCentro_Nombre(String tipo);
+    List<CentroDeSalud> findByTipo_Nombre(String nombre);
 
     @Query("SELECT DISTINCT c FROM CentroDeSalud c WHERE SIZE(c.calificaciones) > 0")
     List<CentroDeSalud> findCentrosConCalificaciones();
